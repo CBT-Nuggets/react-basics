@@ -2,3 +2,21 @@
 	margin: auto;
 	max-width: 700px;
 }
+
+.scrolling-container {
+	max-width: 400px;
+	max-height: 400px;
+	overflow: scroll;
+}
+
+.border-container {
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	margin: auto;
+	max-width: 700px;
+	padding: 16px;
+}
+
+.narrow-column {
+	max-width: 300px;
+}
