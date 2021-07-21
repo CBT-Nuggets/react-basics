@@ -1,0 +1,31 @@
+/* h2 {
+	text-transform: uppercase; // Show that this effects the h2 in the WelcomeMessage as well
+} */
+
+h3 {
+	border-bottom: 1px dotted #ccc;
+}
+
+.content-heading {
+	text-transform: uppercase;
+}
+
+.profile-pic-container {
+	display: flex;
+	justify-content: center;
+}
+
+/* Just copy and paste this stuff */
+.profile-pic-wrap {
+	width: 256px;
+	height: 256px;
+	border-radius: 50%;
+	overflow: hidden;
+	background-color: black;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.profile-pic {
+	width: 100%;
+}
