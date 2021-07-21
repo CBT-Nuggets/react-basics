@@ -1,10 +1,9 @@
-import { myProfileData } from './data';
 import './WelcomeMessage.css';
 
-export const WelcomeMessage = () => {
+export const WelcomeMessage = ({ name }) => {
 	return (
 		<h2 className="welcome-message">
-			Welcome to the Friend-Tracker app, {myProfileData.name}!
+			Welcome to the Friend-Tracker app, {name}!
 		</h2>
 	);
 }
