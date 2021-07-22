@@ -3,6 +3,7 @@ import { PersonCard } from './PersonCard';
 import styles from './PeopleList.module.css';
 
 const PeopleList = ({ people, onClickPerson }) => {
+	console.log(people);
 	return (
 		<div className={styles.peopleList}>
 			{people.map(friend => (
