@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { myProfileData, friendsData } from './data';
 import { ProfileInfo } from './ProfileInfo';
 import { WelcomeMessage } from './WelcomeMessage';
@@ -5,11 +6,26 @@ import { PersonCard } from './PersonCard';
 import styles from './App.module.css';
 
 export const App = () => {
+	// DON'T DO THIS:
+	// let showWelcomeMessage = true;
+
+	// function toggleWelcomeMessage() {
+	// 	showWelcomeMessage = !showWelcomeMessage;
+	// 	console.log(`showWelcomeMessage is now: ${showWelcomeMessage}`);
+	// }
+
+	const [showWelcomeMessage, setShouldShowWelcomeMessage] = useState(true);
+
+	function toggleWelcomeMessage() {
+		setShouldShowWelcomeMessage(!showWelcomeMessage);
+	}
+
 	return (
 		<div>
 			<h1>Friend Tracker</h1>
 			<div className={styles.contentContainer}>
-				<WelcomeMessage name={myProfileData.name} />
+				{showWelcomeMessage && <WelcomeMessage name={myProfileData.name} />}
+				<button onClick={toggleWelcomeMessage}>Toggle Message</button>
 				<h2 className={styles.contentHeading}>My Profile</h2>
 				<ProfileInfo person={myProfileData} />
 				<h2 className={styles.contentHeading}>My Friends</h2>
