@@ -1,12 +1,9 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './PersonCard.module.css';
 
-const PersonCard = ({ person }) => {
-	const [isFavorite, setIsFavorite] = useState(false);
-
+const PersonCard = ({ person, isFavorite, onToggleFavorite }) => {
 	return (
-		<div onClick={() => setIsFavorite(!isFavorite)}
+		<div onClick={onToggleFavorite}
 			className={isFavorite ? styles.cardFavorite : styles.cardNormal}
 		>
 			<div className={styles.profilePicLeft}>

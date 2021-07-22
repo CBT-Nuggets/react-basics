@@ -1,4 +1,5 @@
 export const myProfileData = {
+	id: '012',
 	name: 'Shaun Wassell',
 	profilePicUrl: `${process.env.PUBLIC_URL}/my-profile-pic.png`,
 	age: 100,
@@ -8,6 +9,7 @@ export const myProfileData = {
 };
 
 export const friendsData = [{
+	id: '123',
 	name: 'John Doe',
 	profilePicUrl: `${process.env.PUBLIC_URL}/friend-1.jpeg`,
 	age: 55,
@@ -15,6 +17,7 @@ export const friendsData = [{
 	birthday: 'July 26',
 	interests: ['Traveling', 'Languages', 'Meeting People'],
 }, {
+	id: '234',
 	name: 'Jane Smith',
 	profilePicUrl: `${process.env.PUBLIC_URL}/friend-2.jpeg`,
 	age: 35,
@@ -22,6 +25,7 @@ export const friendsData = [{
 	birthday: 'March 14', // Pi day...
 	interests: ['Math', 'Data Science', 'Calculus', 'Statistics'],
 }, {
+	id: '345',
 	name: 'Bob Brown',
 	profilePicUrl: `${process.env.PUBLIC_URL}/friend-3.jpeg`,
 	age: 28,
