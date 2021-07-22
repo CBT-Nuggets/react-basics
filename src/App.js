@@ -4,21 +4,10 @@ import { WelcomeMessage } from './WelcomeMessage';
 import { PersonCard } from './PersonCard';
 import styles from './App.module.css';
 
-function sayHello() {
-	alert('Hello!');
-}
-
-function sayHelloTo(name) {
-	alert(`Hello ${name}!`);
-}
-
 export const App = () => {
 	return (
 		<div>
 			<h1>Friend Tracker</h1>
-			<button onClick={sayHello}>Say Hello</button>
-			{/* <button onClick={sayHello('Shaun')}>Say Hello</button> No!! */}
-			<button onClick={() => sayHelloTo('Shaun')}>Say Hello to Shaun</button>
 			<div className={styles.contentContainer}>
 				<WelcomeMessage name={myProfileData.name} />
 				<h2 className={styles.contentHeading}>My Profile</h2>
