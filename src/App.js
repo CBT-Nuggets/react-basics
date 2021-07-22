@@ -16,6 +16,20 @@ export const App = () => {
 		}
 	}
 
+	// let friendElements = [];
+
+	// for (let friend of friendsData) {
+	// 	console.log(friend);
+	// 	friendElements.push(
+	// 		<div key={friend.id} className={styles.peopleListItem}>
+	// 			<PersonCard
+	// 				person={friend}
+	// 				isFavorite={favoriteIds.includes(friend.id)}
+	// 				onToggleFavorite={() => toggleFavorite(friend.id)} />
+	// 		</div>
+	// 	);
+	// }
+
 	return (
 		<div>
 			<h1>Friend Tracker</h1>
@@ -26,24 +40,15 @@ export const App = () => {
 				<h2 className={styles.contentHeading}>My Friends</h2>
 				<p>You currently have {favoriteIds.length} favorites</p>
 				<div className={styles.peopleList}>
-					<div className={styles.peopleListItem}>
-						<PersonCard
-							person={friendsData[0]}
-							isFavorite={favoriteIds.includes(friendsData[0].id)}
-							onToggleFavorite={() => toggleFavorite(friendsData[0].id)} />
-					</div>
-					<div className={styles.peopleListItem}>
-						<PersonCard
-							person={friendsData[1]}
-							isFavorite={favoriteIds.includes(friendsData[1].id)}
-							onToggleFavorite={() => toggleFavorite(friendsData[1].id)} />
-					</div>
-					<div className={styles.peopleListItem}>
-						<PersonCard
-							person={friendsData[2]}
-							isFavorite={favoriteIds.includes(friendsData[2].id)}
-							onToggleFavorite={() => toggleFavorite(friendsData[2].id)} />
-					</div>
+					{/* {friendElements} */}
+					{friendsData.map(friend => (
+						<div key={friend.id} className={styles.peopleListItem}>
+							<PersonCard
+								person={friend}
+								isFavorite={favoriteIds.includes(friend.id)}
+								onToggleFavorite={() => toggleFavorite(friend.id)} />
+						</div>
+					))}
 				</div>
 			</div>
 		</div>
