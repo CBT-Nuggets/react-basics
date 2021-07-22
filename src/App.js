@@ -11,7 +11,7 @@ export const App = () => {
 			<div className={styles.contentContainer}>
 				<WelcomeMessage name={myProfileData.name} />
 				<h2 className={styles.contentHeading}>My Profile</h2>
-				<ProfileInfo person={myProfileData} onClick={() => alert('Hello??')} />
+				<ProfileInfo person={myProfileData} />
 				<h2 className={styles.contentHeading}>My Friends</h2>
 				<div className={styles.peopleList}>
 					<div className={styles.peopleListItem}>
