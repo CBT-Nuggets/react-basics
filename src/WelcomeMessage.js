@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import './WelcomeMessage.css';
+import styles from './WelcomeMessage.module.css';
 
 const WelcomeMessage = ({ name }) => {
 	return (
-		<h2 className="welcome-message">
+		<h2 className={styles.welcomeMessage}>
 			Welcome to the Friend-Tracker app, {name}!
 		</h2>
 	);

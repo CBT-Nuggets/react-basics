@@ -2,17 +2,17 @@
 	text-transform: uppercase; // Show that this effects the h2 in the WelcomeMessage as well
 } */
 
-h3 {
+.detailHeading {
 	border-bottom: 1px dotted #ccc;
 }
 
-.profile-pic-container {
+.profilePicContainer {
 	display: flex;
 	justify-content: center;
 }
 
 /* Just copy and paste this stuff */
-.profile-pic-wrap {
+.profilePicWrap {
 	width: 256px;
 	height: 256px;
 	border-radius: 50%;
@@ -22,6 +22,6 @@ h3 {
 	vertical-align: middle;
 }
 
-.profile-pic {
+.profilePic {
 	width: 100%;
 }

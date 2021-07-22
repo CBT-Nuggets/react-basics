@@ -1,28 +1,30 @@
 import PropTypes from 'prop-types';
-import './ProfileInfo.css';
+import styles from './ProfileInfo.module.css';
 
-const ProfileInfo = ({ person }) => {
+const ProfileInfo = ({ person, onClick }) => {
 	return (
-		<>
-		<div className="profile-pic-container">
-			<div className="profile-pic-wrap">
-				<img
-					className="profile-pic"
-					src={person.profilePicUrl}
-					alt={`${person.name} smiling`} />
+		<div onClick={onClick}>
+			<div className={styles.profilePicContainer}>
+				<div className={styles.profilePicWrap}>
+					<img
+						onClick={() => alert(`That's ${person.name}!`)}
+						className={styles.profilePic}
+						src={person.profilePicUrl}
+						alt={`${person.name} smiling`} />
+				</div>
 			</div>
+			<button onClick={() => alert(`Name: ${person.name}, Age; ${person.age}`)}>Display Summary</button>
+			<h3 className={styles.detailHeading}>Name</h3>
+			<p>{person.name}</p>
+			<h3 className={styles.detailHeading}>Age</h3>
+			<p>{person.age}</p>
+			<h3 className={styles.detailHeading}>Bio</h3>
+			<p>{person.bio}</p>
+			<h3 className={styles.detailHeading}>Birthday</h3>
+			<p>{person.birthday}</p>
+			<h3 className={styles.detailHeading}>Interests</h3>
+			<p>{person.interests.join(', ')}</p>
 		</div>
-		<h3>Name</h3>
-		<p>{person.name}</p>
-		<h3>Age</h3>
-		<p>{person.age}</p>
-		<h3>Bio</h3>
-		<p>{person.bio}</p>
-		<h3>Birthday</h3>
-		<p>{person.birthday}</p>
-		<h3>Interests</h3>
-		<p>{person.interests.join(', ')}</p>
-		</>
 	);
 }
 
