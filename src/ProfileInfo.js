@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import './ProfileInfo.css';
 
-export const ProfileInfo = ({ person }) => {
+const ProfileInfo = ({ person }) => {
 	return (
 		<>
 		<div className="profile-pic-container">
@@ -22,6 +23,29 @@ export const ProfileInfo = ({ person }) => {
 		<h3>Interests</h3>
 		<p>{person.interests.join(', ')}</p>
 		</>
-	)
-
+	);
 }
+
+// Show what it would look like if we were passing in the person's
+// data as separate properties
+// ProfileInfo.propTypes = {
+// 	name: PropTypes.string.isRequired,
+// 	profilePicUrl: PropTypes.string,
+// 	age: PropTypes.number,
+// 	bio: PropTypes.string,
+// 	birthday: PropTypes.string,
+// 	interests: PropTypes.arrayOf(PropTypes.string),
+// }
+
+ProfileInfo.propTypes = {
+	person: PropTypes.shape({
+		name: PropTypes.string.isRequired,
+		profilePicUrl: PropTypes.string,
+		age: PropTypes.number,
+		bio: PropTypes.string,
+		birthday: PropTypes.string,
+		interests: PropTypes.arrayOf(PropTypes.string).isRequired,
+	}).isRequired,
+}
+
+export { ProfileInfo };
