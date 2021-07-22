@@ -6,14 +6,6 @@ import { PersonCard } from './PersonCard';
 import styles from './App.module.css';
 
 export const App = () => {
-	// DON'T DO THIS:
-	// let showWelcomeMessage = true;
-
-	// function toggleWelcomeMessage() {
-	// 	showWelcomeMessage = !showWelcomeMessage;
-	// 	console.log(`showWelcomeMessage is now: ${showWelcomeMessage}`);
-	// }
-
 	const [showWelcomeMessage, setShouldShowWelcomeMessage] = useState(true);
 
 	function toggleWelcomeMessage() {
