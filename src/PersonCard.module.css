@@ -1,6 +1,16 @@
-.card {
+.cardNormal {
 	border: 1px solid #ccc;
 	border-radius: 8px;
+	cursor: pointer;
+	display: flex;
+	padding: 8px;
+}
+
+.cardFavorite {
+	background-color: lightgreen;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	cursor: pointer;
 	display: flex;
 	padding: 8px;
 }
