@@ -1,12 +1,18 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './WelcomeMessage.module.css';
 
 const WelcomeMessage = ({ name }) => {
-	return (
-		<h2 className={styles.welcomeMessage}>
-			Welcome to the Friend-Tracker app, {name}!
-		</h2>
-	);
+	const [isVisible, setIsVisible] = useState(true);
+
+	return isVisible ? (
+		<div className={styles.welcomeMessage}>
+			<h2>
+				Welcome to the Friend-Tracker app, {name}!
+			</h2>
+			<button onClick={() => setIsVisible(false)}>Hide</button>
+		</div>
+	) : null;
 }
 
 WelcomeMessage.propTypes = {
