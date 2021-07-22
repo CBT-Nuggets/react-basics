@@ -2,33 +2,22 @@ import { useState } from 'react';
 import { myProfileData, friendsData } from './data';
 import { ProfileInfo } from './ProfileInfo';
 import { WelcomeMessage } from './WelcomeMessage';
-import { PersonCard } from './PersonCard';
+import { PeopleList } from './PeopleList';
 import styles from './App.module.css';
 
 export const App = () => {
-	const [favoriteIds, setFavoriteIds] = useState([]);
+	const [favorites, setFavorites] = useState([]);
+	const [nonFavorites, setNonFavorites] = useState(friendsData);
 
 	const toggleFavorite = (personId) => {
-		if (favoriteIds.includes(personId)) {
-			setFavoriteIds(favoriteIds.filter(id => id !== personId));
+		if (favorites.includes(personId)) {
+			setNonFavorites(nonFavorites.concat(favorites.find(person => person.id === personId)));
+			setFavorites(favorites.filter(person => person.id !== personId));
 		} else {
-			setFavoriteIds(favoriteIds.concat(personId));
+			setFavorites(favorites.concat(nonFavorites.find(person => person.id === personId)));
+			setNonFavorites(nonFavorites.filter(person => person.id !== personId));
 		}
 	}
-
-	// let friendElements = [];
-
-	// for (let friend of friendsData) {
-	// 	console.log(friend);
-	// 	friendElements.push(
-	// 		<div key={friend.id} className={styles.peopleListItem}>
-	// 			<PersonCard
-	// 				person={friend}
-	// 				isFavorite={favoriteIds.includes(friend.id)}
-	// 				onToggleFavorite={() => toggleFavorite(friend.id)} />
-	// 		</div>
-	// 	);
-	// }
 
 	return (
 		<div>
@@ -37,19 +26,11 @@ export const App = () => {
 				<WelcomeMessage name={myProfileData.name} />
 				<h2 className={styles.contentHeading}>My Profile</h2>
 				<ProfileInfo person={myProfileData} />
+				<h2 className={styles.contentHeading}>Favorites</h2>
+				<p>You currently have {favorites.length} favorites</p>
+				<PeopleList people={favorites} onClickPerson={toggleFavorite} />
 				<h2 className={styles.contentHeading}>My Friends</h2>
-				<p>You currently have {favoriteIds.length} favorites</p>
-				<div className={styles.peopleList}>
-					{/* {friendElements} */}
-					{friendsData.map(friend => (
-						<div key={friend.id} className={styles.peopleListItem}>
-							<PersonCard
-								person={friend}
-								isFavorite={favoriteIds.includes(friend.id)}
-								onToggleFavorite={() => toggleFavorite(friend.id)} />
-						</div>
-					))}
-				</div>
+				<PeopleList people={nonFavorites} onClickPerson={toggleFavorite} />
 			</div>
 		</div>
 	);

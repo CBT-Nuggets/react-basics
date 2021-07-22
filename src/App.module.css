@@ -8,14 +8,3 @@
 	margin: 64px 0;
 	text-transform: uppercase;
 }
-
-.peopleList {
-	display: flex;
-	flex-wrap: wrap;
-}
-
-.peopleListItem {
-	box-sizing: border-box;
-	padding: 8px;
-	width: 50%;
-}

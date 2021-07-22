@@ -1,17 +1,15 @@
 import PropTypes from 'prop-types';
 import styles from './PersonCard.module.css';
 
-const PersonCard = ({ person, isFavorite, onToggleFavorite }) => {
+const PersonCard = ({ person, onClick = () => {} }) => {
 	return (
-		<div onClick={onToggleFavorite}
-			className={isFavorite ? styles.cardFavorite : styles.cardNormal}
-		>
+		<div onClick={onClick} className={styles.cardContainer}>
 			<div className={styles.profilePicLeft}>
 				<div className={styles.profilePicWrap}>
 					<img
 						className={styles.profilePic}
 						src={person.profilePicUrl}
-						alt={`${person.name} smiling`} />
+						alt={`${person.name} thumbnail`} />
 				</div>
 			</div>
 			<div className={styles.cardDetails}>
