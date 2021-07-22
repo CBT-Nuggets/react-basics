@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Tag } from './Tag';
 import styles from './ProfileInfo.module.css';
 
 const ProfileInfo = ({ person }) => {
@@ -21,7 +22,7 @@ const ProfileInfo = ({ person }) => {
 		<h3 className={styles.detailHeading}>Birthday</h3>
 		<p>{person.birthday}</p>
 		<h3 className={styles.detailHeading}>Interests</h3>
-		<p>{person.interests.join(', ')}</p>
+		<p>{person.interests.map(interest => <Tag text={interest} />)}</p>
 		</>
 	);
 }
