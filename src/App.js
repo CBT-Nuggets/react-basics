@@ -5,6 +5,7 @@ import { FriendDetailPage } from './pages/FriendDetailPage';
 import { FriendsPage } from './pages/FriendsPage';
 import { UserProfilePage } from './pages/UserProfilePage';
 import styles from './App.module.css';
+import { FavoritesContext } from './contexts/FavoritesContext';
 
 export const App = () => {
 	const existingState = JSON.parse(localStorage.getItem('favoritesIds'));
@@ -26,17 +27,19 @@ export const App = () => {
 	return (
 		<BrowserRouter>
 			<NavBar />
-			<div className={styles.contentContainer}>
-				<Route path="/" exact>
-					<FriendsPage favoritesIds={favoritesIds} onToggleFavorite={toggleFavorite} />
-				</Route>
-				<Route path="/user-profile">
-					<UserProfilePage />
-				</Route>
-				<Route path="/friends/:friendId">
-					<FriendDetailPage favoritesIds={favoritesIds} onToggleFavorite={toggleFavorite} />
-				</Route>
-			</div>
+			<FavoritesContext.Provider value={{ favoritesIds, toggleFavorite }}>
+				<div className={styles.contentContainer}>
+					<Route path="/" exact>
+						<FriendsPage />
+					</Route>
+					<Route path="/user-profile">
+						<UserProfilePage />
+					</Route>
+					<Route path="/friends/:friendId">
+						<FriendDetailPage />
+					</Route>
+				</div>
+			</FavoritesContext.Provider>
 		</BrowserRouter>
 	);
 }

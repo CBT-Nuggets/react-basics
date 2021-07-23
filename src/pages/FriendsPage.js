@@ -1,11 +1,13 @@
+import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { myProfileData, friendsData } from '../data';
 import { PeopleList } from '../components/PeopleList';
 import { WelcomeMessage } from '../components/WelcomeMessage';
+import { FavoritesContext } from '../contexts/FavoritesContext';
 
-const FriendsPage = ({ favoritesIds, onToggleFavorite }) => {
+const FriendsPage = () => {
 	const history = useHistory();
+	const { favoritesIds, toggleFavorite } = useContext(FavoritesContext);
 
 	const favorites = favoritesIds.map(id => friendsData.find(friend => friend.id === id));
 	const nonFavorites = friendsData.filter(friend => !favoritesIds.includes(friend.id));
@@ -23,20 +25,15 @@ const FriendsPage = ({ favoritesIds, onToggleFavorite }) => {
 			people={favorites}
 			onClickPerson={goToPersonDetail}
 			actionName="Remove from favorites"
-			onPersonAction={onToggleFavorite} />
+			onPersonAction={toggleFavorite} />
 		<h2 className="content-heading">My Friends</h2>
 		<PeopleList
 			people={nonFavorites}
 			onClickPerson={goToPersonDetail}
 			actionName="Add to favorites"
-			onPersonAction={onToggleFavorite} />
+			onPersonAction={toggleFavorite} />
 		</>
 	);
-}
-
-FriendsPage.propTypes = {
-	favoritesIds: PropTypes.arrayOf(PropTypes.string).isRequired,
-	onToggleFavorite: PropTypes.func.isRequired,
 }
 
 export { FriendsPage };
