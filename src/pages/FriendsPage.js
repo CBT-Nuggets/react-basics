@@ -35,9 +35,17 @@ const FriendsPage = () => {
 		<WelcomeMessage name={myProfileData.name} />
 		<h2 className="content-heading">Favorites</h2>
 		<p>You currently have {favorites.length} favorites</p>
-		<PeopleList people={favorites} onClickPerson={goToPersonDetail} />
+		<PeopleList
+			people={favorites}
+			onClickPerson={goToPersonDetail}
+			actionName="Remove from favorites"
+			onPersonAction={toggleFavorite} />
 		<h2 className="content-heading">My Friends</h2>
-		<PeopleList people={nonFavorites} onClickPerson={goToPersonDetail} />
+		<PeopleList
+			people={nonFavorites}
+			onClickPerson={goToPersonDetail}
+			actionName="Add to favorites"
+			onPersonAction={toggleFavorite} />
 		</>
 	);
 }

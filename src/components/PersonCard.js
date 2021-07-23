@@ -1,11 +1,15 @@
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from './PersonCard.module.css';
 
-const PersonCard = ({ person, onClick = () => {} }) => {
+const PersonCard = ({
+	person,
+	onClick = () => {},
+	actionName,
+	onAction = () => {},
+}) => {
 	return (
-		// <Link to={`/friends/${person.id}`}> This is one way to do it, but makes everything blue...
-			<div onClick={onClick} className={styles.cardContainer}>
+		<div onClick={onClick} className={styles.cardContainer}>
+			<div className={styles.detailsContainer}>
 				<div className={styles.profilePicLeft}>
 					<div className={styles.profilePicWrap}>
 						<img
@@ -21,7 +25,13 @@ const PersonCard = ({ person, onClick = () => {} }) => {
 					<p>{person.age}</p>
 				</div>
 			</div>
-		// </Link>
+			{actionName && onAction && (
+				<button
+					onClick={e => { onAction(); e.stopPropagation(); }}
+					className={styles.actionButton}
+				>{actionName}</button>
+			)}
+		</div>
 	);
 }
 

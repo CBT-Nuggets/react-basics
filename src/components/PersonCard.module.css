@@ -2,8 +2,15 @@
 	border: 1px solid #ccc;
 	border-radius: 8px;
 	cursor: pointer;
-	display: flex;
 	padding: 8px;
+}
+
+.detailsContainer {
+	display: flex;
+}
+
+.actionButton {
+	width: 100%;
 }
 
 .profilePicLeft {
