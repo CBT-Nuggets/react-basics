@@ -1,9 +1,12 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { myProfileData, friendsData } from '../data';
 import { PeopleList } from '../components/PeopleList';
 import { WelcomeMessage } from '../components/WelcomeMessage';
 
 const FriendsPage = () => {
+	const history = useHistory();
+
 	const existingState = JSON.parse(localStorage.getItem('favoritesIds'));
 
 	const [favoritesIds, setFavoritesIds] = useState(existingState || []);
@@ -23,14 +26,18 @@ const FriendsPage = () => {
 		}
 	}
 
+	const goToPersonDetail = (personId) => {
+		history.push(`/friends/${personId}`);
+	}
+
 	return (
 		<>
 		<WelcomeMessage name={myProfileData.name} />
 		<h2 className="content-heading">Favorites</h2>
 		<p>You currently have {favorites.length} favorites</p>
-		<PeopleList people={favorites} onClickPerson={toggleFavorite} />
+		<PeopleList people={favorites} onClickPerson={goToPersonDetail} />
 		<h2 className="content-heading">My Friends</h2>
-		<PeopleList people={nonFavorites} onClickPerson={toggleFavorite} />
+		<PeopleList people={nonFavorites} onClickPerson={goToPersonDetail} />
 		</>
 	);
 }
