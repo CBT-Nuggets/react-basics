@@ -6,16 +6,22 @@ import { PeopleList } from './PeopleList';
 import styles from './App.module.css';
 
 export const App = () => {
-	const [favoritesIds, setFavoritesIds] = useState([]);
+	const existingState = JSON.parse(localStorage.getItem('favoritesIds'));
+
+	const [favoritesIds, setFavoritesIds] = useState(existingState || []);
 
 	const favorites = favoritesIds.map(id => friendsData.find(friend => friend.id === id));
 	const nonFavorites = friendsData.filter(friend => !favoritesIds.includes(friend.id));
 
 	const toggleFavorite = (personId) => {
 		if (favoritesIds.includes(personId)) {
-			setFavoritesIds(favoritesIds.filter(id => id !== personId));
+			const newFavoritesIds = favoritesIds.filter(id => id !== personId);
+			setFavoritesIds(newFavoritesIds);
+			localStorage.setItem('favoritesIds', JSON.stringify(newFavoritesIds));
 		} else {
-			setFavoritesIds(favoritesIds.concat(personId));
+			const newFavoritesIds = favoritesIds.concat(personId);
+			setFavoritesIds(newFavoritesIds);
+			localStorage.setItem('favoritesIds', JSON.stringify(newFavoritesIds));
 		}
 	}
 
