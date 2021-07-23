@@ -11,7 +11,7 @@ const NavBar = () => {
 				<button className={styles.profileButton}>My Profile</button>
 			</Link>
 		</nav>
-	)
+	);
 }
 
 export { NavBar };
