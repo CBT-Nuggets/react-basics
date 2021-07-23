@@ -40,6 +40,9 @@ PersonCard.propTypes = {
 		name: PropTypes.string.isRequired,
 		age: PropTypes.number,
 	}).isRequired,
+	onClick: PropTypes.func,
+	actionName: PropTypes.string,
+	onAction: PropTypes.func,
 };
 
 export { PersonCard };

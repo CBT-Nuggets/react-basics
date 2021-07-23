@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Tag } from './Tag';
 import styles from './ProfileInfo.module.css';
 
-const ProfileInfo = ({ person }) => {
+const ProfileInfo = ({ person, actionName, onAction }) => {
 	return (
 		<>
 		<div className={styles.profilePicContainer}>
@@ -23,6 +23,7 @@ const ProfileInfo = ({ person }) => {
 		<p>{person.birthday}</p>
 		<h3 className={styles.detailHeading}>Interests</h3>
 		<p>{person.interests.map(interest => <Tag text={interest} />)}</p>
+		{actionName && onAction && <button className={styles.actionButton} onClick={onAction}>{actionName}</button>}
 		</>
 	);
 }
@@ -36,6 +37,8 @@ ProfileInfo.propTypes = {
 		birthday: PropTypes.string,
 		interests: PropTypes.arrayOf(PropTypes.string).isRequired,
 	}).isRequired,
+	actionName: PropTypes.string,
+	onAction: PropTypes.func,
 }
 
 export { ProfileInfo };

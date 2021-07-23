@@ -1,30 +1,14 @@
-import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { myProfileData, friendsData } from '../data';
 import { PeopleList } from '../components/PeopleList';
 import { WelcomeMessage } from '../components/WelcomeMessage';
 
-const FriendsPage = () => {
+const FriendsPage = ({ favoritesIds, onToggleFavorite }) => {
 	const history = useHistory();
-
-	const existingState = JSON.parse(localStorage.getItem('favoritesIds'));
-
-	const [favoritesIds, setFavoritesIds] = useState(existingState || []);
 
 	const favorites = favoritesIds.map(id => friendsData.find(friend => friend.id === id));
 	const nonFavorites = friendsData.filter(friend => !favoritesIds.includes(friend.id));
-
-	const toggleFavorite = (personId) => {
-		if (favoritesIds.includes(personId)) {
-			const newFavoritesIds = favoritesIds.filter(id => id !== personId);
-			setFavoritesIds(newFavoritesIds);
-			localStorage.setItem('favoritesIds', JSON.stringify(newFavoritesIds));
-		} else {
-			const newFavoritesIds = favoritesIds.concat(personId);
-			setFavoritesIds(newFavoritesIds);
-			localStorage.setItem('favoritesIds', JSON.stringify(newFavoritesIds));
-		}
-	}
 
 	const goToPersonDetail = (personId) => {
 		history.push(`/friends/${personId}`);
@@ -39,15 +23,20 @@ const FriendsPage = () => {
 			people={favorites}
 			onClickPerson={goToPersonDetail}
 			actionName="Remove from favorites"
-			onPersonAction={toggleFavorite} />
+			onPersonAction={onToggleFavorite} />
 		<h2 className="content-heading">My Friends</h2>
 		<PeopleList
 			people={nonFavorites}
 			onClickPerson={goToPersonDetail}
 			actionName="Add to favorites"
-			onPersonAction={toggleFavorite} />
+			onPersonAction={onToggleFavorite} />
 		</>
 	);
+}
+
+FriendsPage.propTypes = {
+	favoritesIds: PropTypes.arrayOf(PropTypes.string).isRequired,
+	onToggleFavorite: PropTypes.func.isRequired,
 }
 
 export { FriendsPage };
