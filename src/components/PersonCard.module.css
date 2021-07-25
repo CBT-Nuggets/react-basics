@@ -24,7 +24,7 @@
 	height: 150px;
 	border-radius: 50%;
 	overflow: hidden;
-	background-color: black;
+	background-color: #ccc;
 	display: inline-block;
 	vertical-align: middle;
 }

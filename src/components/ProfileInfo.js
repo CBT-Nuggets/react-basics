@@ -7,10 +7,10 @@ const ProfileInfo = ({ person, actionName, onAction }) => {
 		<>
 		<div className={styles.profilePicContainer}>
 			<div className={styles.profilePicWrap}>
-				<img
+				{person.profilePicUrl && <img
 					className={styles.profilePic}
 					src={person.profilePicUrl}
-					alt={`${person.name} smiling`} />
+					alt={`${person.name} smiling`} />}
 			</div>
 		</div>
 		<h3 className={styles.detailHeading}>Name</h3>

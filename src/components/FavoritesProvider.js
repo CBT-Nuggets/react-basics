@@ -1,7 +1,7 @@
 import { FavoritesContext } from '../contexts/FavoritesContext';
 import { useState } from 'react';
 
-const FavoritesTracker = ({ children }) => {
+const FavoritesProvider = ({ children }) => {
 	const existingState = JSON.parse(localStorage.getItem('favoritesIds'));
 
 	const [favoritesIds, setFavoritesIds] = useState(existingState || []);
@@ -25,4 +25,4 @@ const FavoritesTracker = ({ children }) => {
 	);
 }
 
-export { FavoritesTracker };
+export { FavoritesProvider };

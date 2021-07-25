@@ -12,10 +12,10 @@ const PersonCard = ({
 			<div className={styles.detailsContainer}>
 				<div className={styles.profilePicLeft}>
 					<div className={styles.profilePicWrap}>
-						<img
+						{person.profilePicUrl && <img
 							className={styles.profilePic}
 							src={person.profilePicUrl}
-							alt={`${person.name} thumbnail`} />
+							alt={`${person.name} thumbnail`} />}
 					</div>
 				</div>
 				<div className={styles.cardDetails}>

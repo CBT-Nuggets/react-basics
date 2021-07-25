@@ -1,18 +1,38 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+import { v4 as uuid } from 'uuid';
+import { FriendsContext } from '../contexts/FriendsContext';
 import styles from './NewFriendPage.module.css';
 
 const NewFriendPage = () => {
+	const { addFriend } = useContext(FriendsContext);
+
 	const [name, setName] = useState('');
 	const [age, setAge] = useState('');
 	const [bio, setBio] = useState('');
 	const [birthday, setBirthday] = useState('');
 	const [interests, setInterests] = useState('');
 
+	const history = useHistory();
+
+	const onAddClicked = () => {
+		const newFriend = {
+			id: uuid(),
+			name,
+			age,
+			bio,
+			birthday,
+			interests: interests.split(',').map(str => str.trim()),
+		};
+		addFriend(newFriend);
+		history.push('/');
+	}
+
 	return (
 		<>
 		<h1>Add A New Friend</h1>
 		<div className={styles.infoForm}>
-			<label for="name">
+			<label htmlFor="name">
 				Name
 			</label>
 			<input
@@ -21,7 +41,7 @@ const NewFriendPage = () => {
 				type="text"
 				value={name}
 				onChange={e => setName(e.target.value)} />
-			<label for="age">
+			<label htmlFor="age">
 				Age
 			</label>
 			<input
@@ -30,7 +50,7 @@ const NewFriendPage = () => {
 				type="number"
 				value={age}
 				onChange={e => setAge(Number(e.target.value))} />
-			<label for="bio">
+			<label htmlFor="bio">
 				Bio
 			</label>
 			<textarea
@@ -38,7 +58,7 @@ const NewFriendPage = () => {
 				placeholder="We first met at..."
 				value={bio}
 				onChange={e => setBio(e.target.value)} />
-			<label for="birthday">
+			<label htmlFor="birthday">
 				Birthday
 			</label>
 			<input
@@ -47,7 +67,7 @@ const NewFriendPage = () => {
 				type="text"
 				value={birthday}
 				onChange={e => setBirthday(e.target.value)} />
-			<label for="interests">
+			<label htmlFor="interests">
 				Interests (separate with commas)
 			</label>
 			<input
@@ -55,7 +75,7 @@ const NewFriendPage = () => {
 				type="text"
 				value={interests}
 				onChange={e => setInterests(e.target.value)} />
-			<button onClick={() => alert('Creating a new friend...')}>Create</button>
+			<button onClick={onAddClicked}>Create</button>
 		</div>
 		</>
 	);
