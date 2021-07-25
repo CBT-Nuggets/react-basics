@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { myProfileData } from '../data';
 import { PeopleList } from '../components/PeopleList';
@@ -7,12 +7,6 @@ import { FriendsContext } from '../contexts/FriendsContext';
 import { FavoritesContext } from '../contexts/FavoritesContext';
 
 const FriendsPage = () => {
-	useEffect(() => {
-		console.log('FriendsPage has been (re)rendered');
-
-		return () => console.log('FriendsPage cleanup');
-	});
-
 	const history = useHistory();
 	const { friends } = useContext(FriendsContext);
 	const { favoritesIds, toggleFavorite } = useContext(FavoritesContext);

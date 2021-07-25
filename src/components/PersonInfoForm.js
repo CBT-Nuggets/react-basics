@@ -1,14 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './PersonInfoForm.module.css';
 
 const PersonInfoForm = ({ person = {}, onSubmit = () => {}, buttonText = 'Submit' }) => {
-	useEffect(() => {
-		console.log('PersonInfoForm has been (re)rendered');
-
-		return () => console.log('PersonInfoForm cleanup');
-	});
-
 	const [name, setName] = useState(person.name || '');
 	const [age, setAge] = useState(person.age || '');
 	const [bio, setBio] = useState(person.bio || '');

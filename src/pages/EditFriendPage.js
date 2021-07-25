@@ -1,15 +1,9 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { FriendsContext } from '../contexts/FriendsContext';
 import { PersonInfoForm } from '../components/PersonInfoForm';
 
 const EditFriendPage = () => {
-	useEffect(() => {
-		console.log('EditFriendPage has been (re)rendered');
-
-		return () => console.log('EditFriendPage cleanup');
-	});
-
 	const history = useHistory();
 
 	const { friendId } = useParams();
