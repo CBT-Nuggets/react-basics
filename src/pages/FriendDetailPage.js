@@ -1,10 +1,16 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
 import { ProfileInfo } from '../components/ProfileInfo';
 import { FavoritesContext } from '../contexts/FavoritesContext';
 import { FriendsContext } from '../contexts/FriendsContext';
 
 const FriendDetailPage = () => {
+	useEffect(() => {
+		console.log('FriendDetailPage has been (re)rendered');
+
+		return () => console.log('FriendDetailPage cleanup');
+	});
+
 	const { friends } = useContext(FriendsContext);
 	const { favoritesIds, toggleFavorite } = useContext(FavoritesContext);
 	const { friendId } = useParams();

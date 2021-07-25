@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from './WelcomeMessage.module.css';
 
@@ -7,10 +7,13 @@ const WelcomeMessage = ({ name }) => {
 
 	const [isVisible, setIsVisible] = useState(existingVisibility === false ? false : true);
 
+	useEffect(() => {
+		localStorage.setItem('welcomeMessageVisibility', JSON.stringify());
+	}, [isVisible]);
+
 	const toggleVisible = () => {
 		const newVisibility = !isVisible;
 		setIsVisible(newVisibility);
-		localStorage.setItem('welcomeMessageVisibility', newVisibility);
 	}
 
 	return isVisible ? (

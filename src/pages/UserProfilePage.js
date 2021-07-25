@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { myProfileData as startingInfo } from '../data';
 import { ProfileInfo } from '../components/ProfileInfo';
 import { PersonInfoForm } from '../components/PersonInfoForm';
@@ -7,9 +7,12 @@ const UserProfilePage = () => {
 	const [userInfo, setUserInfo] = useState(JSON.parse(localStorage.getItem('userInfo')) || startingInfo);
 	const [isEditing, setIsEditing] = useState(false);
 
+	useEffect(() => {
+		localStorage.setItem('userInfo', JSON.stringify(userInfo));
+	}, [userInfo]);
+
 	const updateUserInfo = updatedInfo => {
 		setUserInfo(updatedInfo);
-		localStorage.setItem('userInfo', JSON.stringify(updatedInfo));
 		setIsEditing(false);
 	}
 

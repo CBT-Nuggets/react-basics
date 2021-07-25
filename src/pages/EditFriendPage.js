@@ -1,9 +1,15 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { FriendsContext } from '../contexts/FriendsContext';
 import { PersonInfoForm } from '../components/PersonInfoForm';
 
 const EditFriendPage = () => {
+	useEffect(() => {
+		console.log('EditFriendPage has been (re)rendered');
+
+		return () => console.log('EditFriendPage cleanup');
+	});
+
 	const history = useHistory();
 
 	const { friendId } = useParams();
@@ -17,7 +23,7 @@ const EditFriendPage = () => {
 
 	return (
 		<>
-		<h1>Add A New Friend</h1>
+		<h1>Edit Friend Info</h1>
 		<PersonInfoForm
 			person={friend}
 			onSubmit={saveUpdatedInformation}
