@@ -10,6 +10,7 @@ const NewFriendPage = () => {
 	const [name, setName] = useState('');
 	const [age, setAge] = useState('');
 	const [bio, setBio] = useState('');
+	const [profilePicUrl, setProfilePicUrl] = useState('');
 	const [birthday, setBirthday] = useState('');
 	const [interests, setInterests] = useState('');
 
@@ -21,6 +22,7 @@ const NewFriendPage = () => {
 			name,
 			age,
 			bio,
+			profilePicUrl,
 			birthday,
 			interests: interests.split(',').map(str => str.trim()),
 		};
@@ -58,6 +60,15 @@ const NewFriendPage = () => {
 				placeholder="We first met at..."
 				value={bio}
 				onChange={e => setBio(e.target.value)} />
+			<label htmlFor="picUrl">
+				Profile Picture URL
+			</label>
+			<input
+				id="picUrl"
+				placeholder="i.e. https://www.google.com/some-photo"
+				type="text"
+				value={profilePicUrl}
+				onChange={e => setProfilePicUrl(e.target.value)} />
 			<label htmlFor="birthday">
 				Birthday
 			</label>
