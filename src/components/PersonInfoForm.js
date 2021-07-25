@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import styles from './PersonInfoForm.module.css';
 
 const PersonInfoForm = ({ person = {}, onSubmit = () => {} }) => {
@@ -78,6 +79,18 @@ const PersonInfoForm = ({ person = {}, onSubmit = () => {} }) => {
 			<button onClick={onAddClicked}>Create</button>
 		</div>
 	);
+}
+
+PersonInfoForm.propTypes = {
+	person: PropTypes.shape({
+		name: PropTypes.string,
+		age: PropTypes.number,
+		bio: PropTypes.string,
+		profilePicUrl: PropTypes.string,
+		birthday: PropTypes.string,
+		interests: PropTypes.string,
+	}),
+	onSubmit: PropTypes.func,
 }
 
 export { PersonInfoForm };

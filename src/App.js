@@ -2,6 +2,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { FavoritesProvider } from './components/FavoritesProvider';
 import { FriendsProvider } from './components/FriendsProvider';
 import { NavBar } from './components/NavBar';
+import { EditFriendPage } from './pages/EditFriendPage';
 import { FriendDetailPage } from './pages/FriendDetailPage';
 import { FriendsPage } from './pages/FriendsPage';
 import { NewFriendPage } from './pages/NewFriendPage';
@@ -23,6 +24,9 @@ export const App = () => {
 						</Route>
 						<Route path="/friends/:friendId">
 							<FriendDetailPage />
+						</Route>
+						<Route path="/edit-friend/:friendId">
+							<EditFriendPage />
 						</Route>
 						<Route path="/new-friend">
 							<NewFriendPage />

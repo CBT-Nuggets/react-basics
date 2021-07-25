@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Tag } from './Tag';
 import styles from './ProfileInfo.module.css';
 
-const ProfileInfo = ({ person, actionName, onAction }) => {
+const ProfileInfo = ({ person, actions = [] }) => {
 	return (
 		<>
 		<div className={styles.profilePicContainer}>
@@ -23,7 +23,9 @@ const ProfileInfo = ({ person, actionName, onAction }) => {
 		<p>{person.birthday}</p>
 		<h3 className={styles.detailHeading}>Interests</h3>
 		<p>{person.interests.map(interest => <Tag text={interest} />)}</p>
-		{actionName && onAction && <button className={styles.actionButton} onClick={onAction}>{actionName}</button>}
+		{actions.map(action => (
+			<button className={styles.actionButton} onClick={action.handler}>{action.actionName}</button>
+		))}
 		</>
 	);
 }
@@ -37,8 +39,10 @@ ProfileInfo.propTypes = {
 		birthday: PropTypes.string,
 		interests: PropTypes.arrayOf(PropTypes.string).isRequired,
 	}).isRequired,
-	actionName: PropTypes.string,
-	onAction: PropTypes.func,
+	actions: PropTypes.arrayOf(PropTypes.shape({
+		actionName: PropTypes.string.isRequired,
+		handler: PropTypes.func.isRequired,
+	})),
 }
 
 export { ProfileInfo };
