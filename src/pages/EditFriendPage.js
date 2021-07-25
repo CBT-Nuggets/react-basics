@@ -18,7 +18,10 @@ const EditFriendPage = () => {
 	return (
 		<>
 		<h1>Add A New Friend</h1>
-		<PersonInfoForm person={friend} onSubmit={saveUpdatedInformation} />
+		<PersonInfoForm
+			person={friend}
+			onSubmit={saveUpdatedInformation}
+			buttonText="Save Changes" />
 		</>
 	);
 }

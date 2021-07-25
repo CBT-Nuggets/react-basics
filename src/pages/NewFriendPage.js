@@ -20,7 +20,9 @@ const NewFriendPage = () => {
 	return (
 		<>
 		<h1>Add A New Friend</h1>
-		<PersonInfoForm onSubmit={createNewFriend} />
+		<PersonInfoForm
+			onSubmit={createNewFriend}
+			buttonText="Create" />
 		</>
 	);
 }

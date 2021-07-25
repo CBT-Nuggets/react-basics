@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './PersonInfoForm.module.css';
 
-const PersonInfoForm = ({ person = {}, onSubmit = () => {} }) => {
+const PersonInfoForm = ({ person = {}, onSubmit = () => {}, buttonText = 'Submit' }) => {
 	const [name, setName] = useState(person.name || '');
 	const [age, setAge] = useState(person.age || '');
 	const [bio, setBio] = useState(person.bio || '');
@@ -10,8 +10,9 @@ const PersonInfoForm = ({ person = {}, onSubmit = () => {} }) => {
 	const [birthday, setBirthday] = useState(person.birthday || '');
 	const [interests, setInterests] = useState((person.interests && person.interests.join(', ')) || '');
 
-	const onAddClicked = () => {
+	const onButtonClicked = () => {
 		const personInfo = {
+			id: person.id,
 			name,
 			age,
 			bio,
@@ -76,21 +77,23 @@ const PersonInfoForm = ({ person = {}, onSubmit = () => {} }) => {
 				type="text"
 				value={interests}
 				onChange={e => setInterests(e.target.value)} />
-			<button onClick={onAddClicked}>Create</button>
+			<button onClick={onButtonClicked}>{buttonText}</button>
 		</div>
 	);
 }
 
 PersonInfoForm.propTypes = {
 	person: PropTypes.shape({
+		id: PropTypes.string,
 		name: PropTypes.string,
 		age: PropTypes.number,
 		bio: PropTypes.string,
 		profilePicUrl: PropTypes.string,
 		birthday: PropTypes.string,
-		interests: PropTypes.string,
+		interests: PropTypes.arrayOf(PropTypes.string),
 	}),
 	onSubmit: PropTypes.func,
+	buttonText: PropTypes.string,
 }
 
 export { PersonInfoForm };

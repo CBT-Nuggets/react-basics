@@ -22,9 +22,12 @@ const ProfileInfo = ({ person, actions = [] }) => {
 		<h3 className={styles.detailHeading}>Birthday</h3>
 		<p>{person.birthday}</p>
 		<h3 className={styles.detailHeading}>Interests</h3>
-		<p>{person.interests.map(interest => <Tag text={interest} />)}</p>
+		<div>{person.interests.map(interest => <Tag key={interest} text={interest} />)}</div>
 		{actions.map(action => (
-			<button className={styles.actionButton} onClick={action.handler}>{action.actionName}</button>
+			<button
+				key={action.actionName}
+				className={styles.actionButton}
+				onClick={action.handler}>{action.actionName}</button>
 		))}
 		</>
 	);
