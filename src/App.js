@@ -1,3 +1,4 @@
+import { Profiler } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { FavoritesProvider } from './components/FavoritesProvider';
 import { FriendsProvider } from './components/FriendsProvider';
@@ -7,29 +8,42 @@ import { FriendDetailPage } from './pages/FriendDetailPage';
 import { FriendsPage } from './pages/FriendsPage';
 import { NewFriendPage } from './pages/NewFriendPage';
 import { UserProfilePage } from './pages/UserProfilePage';
+import { trackRender } from './performance/trackRender';
 import styles from './App.module.css';
 
 export const App = () => {
 	return (
 		<BrowserRouter>
-			<NavBar />
+			<Profiler id="Navigation" onRender={trackRender}>
+				<NavBar />
+			</Profiler>
 			<FriendsProvider>
 				<FavoritesProvider>
 					<div className={styles.contentContainer}>
 						<Route path="/" exact>
-							<FriendsPage />
+							<Profiler id="Friends Page" onRender={trackRender}>
+								<FriendsPage />
+							</Profiler>
 						</Route>
 						<Route path="/user-profile">
-							<UserProfilePage />
+							<Profiler id="User Profile Page" onRender={trackRender}>
+								<UserProfilePage />
+							</Profiler>
 						</Route>
 						<Route path="/friends/:friendId">
-							<FriendDetailPage />
+							<Profiler id="Friend Detail Page" onRender={trackRender}>
+								<FriendDetailPage />
+							</Profiler>
 						</Route>
 						<Route path="/edit-friend/:friendId">
-							<EditFriendPage />
+							<Profiler id="Edit Friend Page" onRender={trackRender}>
+								<EditFriendPage />
+							</Profiler>
 						</Route>
 						<Route path="/new-friend">
-							<NewFriendPage />
+							<Profiler id="New Friend Page" onRender={trackRender}>
+								<NewFriendPage />
+							</Profiler>
 						</Route>
 					</div>
 				</FavoritesProvider>

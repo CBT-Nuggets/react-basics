@@ -2,6 +2,11 @@ import { Link } from 'react-router-dom';
 import styles from './NavBar.module.css';
 
 const NavBar = () => {
+	// Holy moly
+	// for (let x in Array(10000000).fill(1)) {
+	// 	const answer = Math.sqrt(123456789);
+	// }
+
 	return (
 		<nav className={styles.navBar}>
 			<Link to="/">
