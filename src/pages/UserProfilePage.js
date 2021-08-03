@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateProfile } from '../actions/profile';
 import { ProfileInfo } from '../components/ProfileInfo';
 import { PersonInfoForm } from '../components/PersonInfoForm';
 
@@ -7,8 +8,10 @@ const UserProfilePage = () => {
 	const profileInfo = useSelector(state => state.profile);
 	const [isEditing, setIsEditing] = useState(false);
 
+	const dispatch = useDispatch();
+
 	const updateUserInfo = updatedInfo => {
-		// setUserInfo(updatedInfo);
+		dispatch(updateProfile(updatedInfo));
 		setIsEditing(false);
 	}
 
