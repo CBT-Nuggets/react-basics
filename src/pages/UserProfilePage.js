@@ -1,18 +1,14 @@
-import { useState, useEffect } from 'react';
-import { myProfileData as startingInfo } from '../data';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { ProfileInfo } from '../components/ProfileInfo';
 import { PersonInfoForm } from '../components/PersonInfoForm';
 
 const UserProfilePage = () => {
-	const [userInfo, setUserInfo] = useState(JSON.parse(localStorage.getItem('userInfo')) || startingInfo);
+	const profileInfo = useSelector(state => state.profile);
 	const [isEditing, setIsEditing] = useState(false);
 
-	useEffect(() => {
-		localStorage.setItem('userInfo', JSON.stringify(userInfo));
-	}, [userInfo]);
-
 	const updateUserInfo = updatedInfo => {
-		setUserInfo(updatedInfo);
+		// setUserInfo(updatedInfo);
 		setIsEditing(false);
 	}
 
@@ -25,8 +21,8 @@ const UserProfilePage = () => {
 		<>
 		<h2 className="content-heading">My Profile</h2>
 		{isEditing
-			? <PersonInfoForm person={userInfo} onSubmit={updateUserInfo} buttonText="Save Changes" />
-			: <ProfileInfo person={userInfo} actions={actions} />}
+			? <PersonInfoForm person={profileInfo} onSubmit={updateUserInfo} buttonText="Save Changes" />
+			: <ProfileInfo person={profileInfo} actions={actions} />}
 		</>
 	);
 }

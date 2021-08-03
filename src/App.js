@@ -1,6 +1,4 @@
 import { BrowserRouter, Route } from 'react-router-dom';
-import { FavoritesProvider } from './components/FavoritesProvider';
-import { FriendsProvider } from './components/FriendsProvider';
 import { NavBar } from './components/NavBar';
 import { EditFriendPage } from './pages/EditFriendPage';
 import { FriendDetailPage } from './pages/FriendDetailPage';
@@ -13,27 +11,23 @@ export const App = () => {
 	return (
 		<BrowserRouter>
 			<NavBar />
-			<FriendsProvider>
-				<FavoritesProvider>
-					<div className={styles.contentContainer}>
-						<Route path="/" exact>
-							<FriendsPage />
-						</Route>
-						<Route path="/user-profile">
-							<UserProfilePage />
-						</Route>
-						<Route path="/friends/:friendId">
-							<FriendDetailPage />
-						</Route>
-						<Route path="/edit-friend/:friendId">
-							<EditFriendPage />
-						</Route>
-						<Route path="/new-friend">
-							<NewFriendPage />
-						</Route>
-					</div>
-				</FavoritesProvider>
-			</FriendsProvider>
+			<div className={styles.contentContainer}>
+				<Route path="/" exact>
+					<FriendsPage />
+				</Route>
+				<Route path="/user-profile">
+					<UserProfilePage />
+				</Route>
+				<Route path="/friends/:friendId">
+					<FriendDetailPage />
+				</Route>
+				<Route path="/edit-friend/:friendId">
+					<EditFriendPage />
+				</Route>
+				<Route path="/new-friend">
+					<NewFriendPage />
+				</Route>
+			</div>
 		</BrowserRouter>
 	);
 }

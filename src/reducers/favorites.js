@@ -10,7 +10,7 @@ export const favoritesReducer = (state = [], action) => {
     }
     case REMOVE_FAVORITE: {
         const { friendId } = payload;
-        return state.filter(friend => friend.id !== friendId);
+        return state.filter(id => id !== friendId);
     }
     default: {
         return state;
