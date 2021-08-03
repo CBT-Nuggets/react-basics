@@ -4,13 +4,14 @@ import { addFavorite, removeFavorite } from '../actions/favorites';
 import { myProfileData } from '../data';
 import { PeopleList } from '../components/PeopleList';
 import { WelcomeMessage } from '../components/WelcomeMessage';
+import { getFavorites, getNonFavorites } from '../selectors/favorites';
 
 const FriendsPage = () => {
 	const history = useHistory();
 	const dispatch = useDispatch();
 
-	const favorites = useSelector(state => state.favorites.map(id => state.friends.find(friend => friend.id === id)));
-	const nonFavorites = useSelector(state => state.friends.filter(friend => !state.favorites.includes(friend.id)));
+	const favorites = useSelector(getFavorites);
+	const nonFavorites = useSelector(getNonFavorites);
 
 	const goToPersonDetail = (personId) => {
 		history.push(`/friends/${personId}`);

@@ -3,9 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { updateProfile } from '../actions/profile';
 import { ProfileInfo } from '../components/ProfileInfo';
 import { PersonInfoForm } from '../components/PersonInfoForm';
+import { getProfileInfo } from '../selectors/profile';
 
 const UserProfilePage = () => {
-	const profileInfo = useSelector(state => state.profile);
+	const profileInfo = useSelector(getProfileInfo);
 	const [isEditing, setIsEditing] = useState(false);
 
 	const dispatch = useDispatch();

@@ -2,14 +2,16 @@ import { Link, useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { addFavorite, removeFavorite } from '../actions/favorites';
 import { ProfileInfo } from '../components/ProfileInfo';
+import { getIsFavorite } from '../selectors/favorites';
+import { getFriendById } from '../selectors/friends';
 
 const FriendDetailPage = () => {
 	const { friendId } = useParams();
 	const history = useHistory();
 	const dispatch = useDispatch();
 
-	const selectedFriend = useSelector(state => state.friends.find(friend => friend.id === friendId));
-	const isFavorite = useSelector(state => state.favorites.includes(selectedFriend.id));
+	const selectedFriend = useSelector(state => getFriendById(friendId, state));
+	const isFavorite = useSelector(state => getIsFavorite(friendId, state));
 
 	const toggleFavorite = friendId => {
 		if (isFavorite) {
