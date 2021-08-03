@@ -4,10 +4,10 @@ export const addFriend = newFriendInfo => ({
     payload: { newFriendInfo },
 });
 
-export const EDIT_FRIEND = 'EDIT_FRIEND';
-export const editFriend = updates => ({
-    type: EDIT_FRIEND,
-    payload: { updates },
+export const UPDATE_FRIEND = 'UPDATE_FRIEND';
+export const updateFriend = (friendId, updates) => ({
+    type: UPDATE_FRIEND,
+    payload: { friendId, updates },
 });
 
 export const DELETE_FRIEND = 'DELETE_FRIEND';

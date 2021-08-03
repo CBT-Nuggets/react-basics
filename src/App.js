@@ -1,4 +1,3 @@
-import { Profiler } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { FavoritesProvider } from './components/FavoritesProvider';
 import { FriendsProvider } from './components/FriendsProvider';
