@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
-import { addFriend } from '../actions/friends';
-import { PersonInfoForm } from '../components/PersonInfoForm';
+import { addFriend } from '../friends/actions';
+import { PersonInfoForm } from '../friends/PersonInfoForm';
 
 const NewFriendPage = () => {
 	const history = useHistory();

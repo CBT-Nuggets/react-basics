@@ -1,9 +1,10 @@
 import { useHistory } from 'react-router-dom';
-import { addFavorite, removeFavorite } from '../actions/favorites';
+import { useSelector, useDispatch } from 'react-redux';
+import { addFavorite, removeFavorite } from '../favorites/actions';
 import { myProfileData } from '../data';
-import { PeopleList } from '../components/PeopleList';
-import { WelcomeMessage } from '../components/WelcomeMessage';
-import { getFavorites, getNonFavorites } from '../selectors/favorites';
+import { PeopleList } from '../friends/PeopleList';
+import { WelcomeMessage } from '../ui/WelcomeMessage';
+import { getFavorites, getNonFavorites } from '../favorites/selectors';
 
 const FriendsPage = () => {
 	const history = useHistory();

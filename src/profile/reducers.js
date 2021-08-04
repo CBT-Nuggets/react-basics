@@ -1,5 +1,5 @@
 import { myProfileData } from '../data';
-import { UPDATE_PROFILE } from '../actions/profile';
+import { UPDATE_PROFILE } from '../profile/actions';
 
 export const profileReducer = (state = myProfileData, action) => {
     const { type, payload } = action;

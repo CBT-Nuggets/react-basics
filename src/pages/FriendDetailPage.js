@@ -1,9 +1,9 @@
 import { Link, useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { addFavorite, removeFavorite } from '../actions/favorites';
-import { ProfileInfo } from '../components/ProfileInfo';
-import { getIsFavorite } from '../selectors/favorites';
-import { getFriendById } from '../selectors/friends';
+import { addFavorite, removeFavorite } from '../favorites/actions';
+import { ProfileInfo } from '../profile/ProfileInfo';
+import { getIsFavorite } from '../favorites/selectors';
+import { getFriendById } from '../friends/selectors';
 
 const FriendDetailPage = () => {
 	const { friendId } = useParams();

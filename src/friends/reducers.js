@@ -1,4 +1,4 @@
-import { ADD_FRIEND, DELETE_FRIEND, UPDATE_FRIEND } from '../actions/friends';
+import { ADD_FRIEND, DELETE_FRIEND, UPDATE_FRIEND } from '../friends/actions';
 import { friendsData } from '../data';
 
 export const friendsReducer = (state = friendsData, action) => {

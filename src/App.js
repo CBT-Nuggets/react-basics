@@ -1,5 +1,5 @@
 import { BrowserRouter, Route } from 'react-router-dom';
-import { NavBar } from './components/NavBar';
+import { NavBar } from './ui/NavBar';
 import { EditFriendPage } from './pages/EditFriendPage';
 import { FriendDetailPage } from './pages/FriendDetailPage';
 import { FriendsPage } from './pages/FriendsPage';

@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { getFriends, getFriendById } from './friends';
+import { getFriends, getFriendById } from '../friends/selectors';
 
 export const getFavoriteIds = state => state.favorites;
 

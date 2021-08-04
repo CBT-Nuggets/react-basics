@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateProfile } from '../actions/profile';
-import { ProfileInfo } from '../components/ProfileInfo';
-import { PersonInfoForm } from '../components/PersonInfoForm';
-import { getProfileInfo } from '../selectors/profile';
+import { updateProfile } from '../profile/actions';
+import { ProfileInfo } from '../profile/ProfileInfo';
+import { PersonInfoForm } from '../friends/PersonInfoForm';
+import { getProfileInfo } from '../profile/selectors';
 
 const UserProfilePage = () => {
 	const profileInfo = useSelector(getProfileInfo);

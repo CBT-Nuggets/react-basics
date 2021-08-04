@@ -4,9 +4,9 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // For localStorage
 // import storageSession from 'redux-persist/lib/storage/session'; // For session storage
 // import AsyncStorage from '@react-native-community/async-storage' // For React Native
-import { favoritesReducer } from './reducers/favorites';
-import { friendsReducer } from './reducers/friends';
-import { profileReducer } from './reducers/profile';
+import { favoritesReducer } from './favorites/reducers';
+import { friendsReducer } from './friends/reducers';
+import { profileReducer } from './profile/reducers';
 
 const rootReducer = combineReducers({
     favorites: favoritesReducer,

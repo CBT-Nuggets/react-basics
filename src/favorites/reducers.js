@@ -1,4 +1,4 @@
-import { ADD_FAVORITE, REMOVE_FAVORITE } from '../actions/favorites';
+import { ADD_FAVORITE, REMOVE_FAVORITE } from './actions';
 
 export const favoritesReducer = (state = [], action) => {
     const { type, payload } = action;

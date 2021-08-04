@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Tag } from './Tag';
+import { Tag } from '../ui/Tag';
 import styles from './ProfileInfo.module.css';
 
 const ProfileInfo = ({ person, actions = [] }) => {

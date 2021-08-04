@@ -1,8 +1,8 @@
 import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateFriend } from '../actions/friends';
-import { PersonInfoForm } from '../components/PersonInfoForm';
-import { getFriendById } from '../selectors/friends';
+import { updateFriend } from '../friends/actions';
+import { PersonInfoForm } from '../friends/PersonInfoForm';
+import { getFriendById } from '../friends/selectors';
 
 const EditFriendPage = () => {
 	const history = useHistory();
