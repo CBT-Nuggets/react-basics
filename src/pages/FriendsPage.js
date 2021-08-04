@@ -1,17 +1,14 @@
 import { useHistory } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import { addFavorite, removeFavorite } from '../actions/favorites';
 import { myProfileData } from '../data';
 import { PeopleList } from '../components/PeopleList';
 import { WelcomeMessage } from '../components/WelcomeMessage';
 import { getFavorites, getNonFavorites } from '../selectors/favorites';
 
-const FriendsPage = () => {
+const FriendsPageBase = ({ favorites, nonFavorites, addFavorite, removeFavorite }) => {
+	console.log('Friends Page rendered');
 	const history = useHistory();
-	const dispatch = useDispatch();
-
-	const favorites = useSelector(getFavorites);
-	const nonFavorites = useSelector(getNonFavorites);
 
 	const goToPersonDetail = (personId) => {
 		history.push(`/friends/${personId}`);
@@ -26,16 +23,31 @@ const FriendsPage = () => {
 			people={favorites}
 			onClickPerson={goToPersonDetail}
 			actionName="Remove from favorites"
-			onPersonAction={id => dispatch(removeFavorite(id))} />
+			onPersonAction={id => removeFavorite(id)} />
 		<h2 className="content-heading">My Friends</h2>
 		<PeopleList
 			people={nonFavorites}
 			onClickPerson={goToPersonDetail}
 			actionName="Add to favorites"
-			onPersonAction={id => dispatch(addFavorite(id))}
+			onPersonAction={id => addFavorite(id)}
 			allowAdditions />
 		</>
 	);
 }
+
+const mapStateToProps = state => ({
+	favorites: getFavorites(state),
+	nonFavorites: getNonFavorites(state),
+});
+
+const mapDispatchToProps = dispatch => ({
+	addFavorite: id => dispatch(addFavorite(id)),
+	removeFavorite: id => dispatch(removeFavorite(id)),
+});
+
+const FriendsPage = connect(
+	mapStateToProps,
+	mapDispatchToProps,
+)(FriendsPageBase);
 
 export { FriendsPage };
