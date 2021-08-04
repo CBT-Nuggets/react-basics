@@ -10,7 +10,7 @@ const FriendDetailPage = () => {
 	const history = useHistory();
 	const dispatch = useDispatch();
 
-	const selectedFriend = useSelector(state => getFriendById(friendId, state));
+	const selectedFriend = useSelector(state => getFriendById(friendId)(state));
 	const isFavorite = useSelector(state => getIsFavorite(friendId, state));
 
 	const toggleFavorite = friendId => {

@@ -10,7 +10,7 @@ const EditFriendPage = () => {
 	const dispatch = useDispatch();
 	const { friendId } = useParams();
 
-	const friend = useSelector(state => getFriendById(friendId, state));
+	const friend = useSelector(getFriendById(friendId));
 
 	const saveUpdatedInformation = updatedInfo => {
 		dispatch(updateFriend(friendId, updatedInfo));
