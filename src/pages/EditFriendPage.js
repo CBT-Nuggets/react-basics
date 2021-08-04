@@ -5,7 +5,6 @@ import { PersonInfoForm } from '../components/PersonInfoForm';
 import { getFriendById } from '../selectors/friends';
 
 const EditFriendPage = () => {
-	console.log('Edit Friend Page rendering');
 	const history = useHistory();
 	const dispatch = useDispatch();
 	const { friendId } = useParams();

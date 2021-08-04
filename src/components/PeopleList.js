@@ -11,8 +11,6 @@ const PeopleList = ({
 	onPersonAction = () => {},
 	allowAdditions,
 }) => {
-	console.log('PeopleList re-rendering');
-
 	const history = useHistory();
 
 	return (
