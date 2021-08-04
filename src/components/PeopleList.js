@@ -24,7 +24,7 @@ const PeopleList = ({
 						onAction={() => onPersonAction(friend.id)} />
 				</div>
 			))}
-			{allowAdditions && <div role="list-item" key="new-friend-card" className={styles.peopleListItem}>
+			{allowAdditions && <div key="new-friend-card" className={styles.peopleListItem}>
 				<NewFriendCard onClick={() => history.push('/new-friend')} />
 			</div>}
 		</div>

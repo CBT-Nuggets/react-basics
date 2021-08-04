@@ -1,4 +1,4 @@
-import { fireEvent, isInaccessible, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { PersonCard } from './PersonCard';
 
 const fakePerson = {
