@@ -6,4 +6,4 @@ export const getFavorites = state => getFavoriteIds(state).map(id => getFriendBy
 
 export const getIsFavorite = (id, state) => getFavoriteIds(state).includes(id);
 
-export const getNonFavorites = state => getFriends(state).filter(friend => !getFavoriteIds(state).includes(friend.id))
+export const getNonFavorites = state => getFriends(state).filter(friend => !getFavoriteIds(state).includes(friend.id));

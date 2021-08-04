@@ -7,6 +7,8 @@ import { WelcomeMessage } from '../components/WelcomeMessage';
 import { getFavorites, getNonFavorites } from '../selectors/favorites';
 
 const FriendsPage = () => {
+	console.log('FriendsPage rendering'); // This will fire every time ANY action occurs in the app (even one that has no effect on anything whatsoever)!
+
 	const history = useHistory();
 	const dispatch = useDispatch();
 

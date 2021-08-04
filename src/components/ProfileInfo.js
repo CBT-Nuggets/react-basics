@@ -3,6 +3,8 @@ import { Tag } from './Tag';
 import styles from './ProfileInfo.module.css';
 
 const ProfileInfo = ({ person, actions = [] }) => {
+	console.log('ProfileInfo rendering');
+
 	return (
 		<>
 		<div className={styles.profilePicContainer}>

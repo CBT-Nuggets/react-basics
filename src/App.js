@@ -22,7 +22,7 @@ export const App = () => {
 					<FriendDetailPage />
 				</Route>
 				<Route path="/edit-friend/:friendId">
-					<EditFriendPage />
+					<EditFriendPage someFunc={() => console.log('Hello!')} />
 				</Route>
 				<Route path="/new-friend">
 					<NewFriendPage />
