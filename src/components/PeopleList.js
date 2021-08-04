@@ -14,7 +14,7 @@ const PeopleList = ({
 	const history = useHistory();
 
 	return (
-		<div className={styles.peopleList}>
+		<div className={styles.peopleList} role="list">
 			{people.map(friend => (
 				<div key={friend.id} className={styles.peopleListItem}>
 					<PersonCard
@@ -24,7 +24,7 @@ const PeopleList = ({
 						onAction={() => onPersonAction(friend.id)} />
 				</div>
 			))}
-			{allowAdditions && <div key="new-friend-card" className={styles.peopleListItem}>
+			{allowAdditions && <div role="list-item" key="new-friend-card" className={styles.peopleListItem}>
 				<NewFriendCard onClick={() => history.push('/new-friend')} />
 			</div>}
 		</div>

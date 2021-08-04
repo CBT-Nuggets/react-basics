@@ -8,7 +8,7 @@ const PersonCard = ({
 	onAction = () => {},
 }) => {
 	return (
-		<div onClick={onClick} className={styles.cardContainer}>
+		<div onClick={() => onClick()} className={styles.cardContainer} role="listitem">
 			<div className={styles.detailsContainer}>
 				<div className={styles.profilePicLeft}>
 					<div className={styles.profilePicWrap}>
