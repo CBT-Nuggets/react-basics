@@ -25,20 +25,20 @@ const PersonInfoForm = ({ person = {}, onSubmit = () => {}, buttonText = 'Submit
 
 	return (
 		<div className={styles.infoForm}>
-			<label htmlFor="name">
+			<label htmlFor="nameInput">
 				Name
 			</label>
 			<input
-				id="name"
+				id="nameInput"
 				placeholder="John Doe"
 				type="text"
 				value={name}
 				onChange={e => setName(e.target.value)} />
-			<label htmlFor="age">
+			<label htmlFor="ageInput">
 				Age
 			</label>
 			<input
-				id="age"
+				id="ageInput"
 				placeholder="Age"
 				type="number"
 				value={age}
@@ -73,6 +73,7 @@ const PersonInfoForm = ({ person = {}, onSubmit = () => {}, buttonText = 'Submit
 				Interests (separate with commas)
 			</label>
 			<input
+				id="interests"
 				placeholder="Food, movies, travel, ..."
 				type="text"
 				value={interests}

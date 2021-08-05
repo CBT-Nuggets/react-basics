@@ -1,15 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { PersonCard } from './PersonCard';
-
-const fakePerson = {
-    id: '012',
-    name: 'Shaun Wassell',
-    profilePicUrl: `${process.env.PUBLIC_URL}/my-profile-pic.png`,
-    age: 100,
-    bio: 'I like to program. I also like food.',
-    birthday: 'March 1',
-    interests: ['Programming', 'Data Science', 'Gardening', 'Foreign Languages'],
-};
+import { fakePerson } from '../test-utils/fakes';
 
 test('displays the person\'s name, age, and profile pic', () => {
     // render(<PersonCard />); // Going against the propTypes here (i.e. by forgetting one) will cause the test to fail

@@ -3,17 +3,13 @@ import PropTypes from 'prop-types';
 import styles from './WelcomeMessage.module.css';
 
 const WelcomeMessage = ({ name }) => {
-	const existingVisibility = localStorage.getItem('welcomeMessageVisibility') === 'true';
+	const alreadyHidden = localStorage.getItem('welcomeMessageHidden') === 'yes';
 
-	const [isVisible, setIsVisible] = useState(existingVisibility === false ? false : true);
+	const [isVisible, setIsVisible] = useState(alreadyHidden ? false : true);
 
-	useEffect(() => {
-		localStorage.setItem('welcomeMessageVisibility', JSON.stringify());
-	}, [isVisible]);
-
-	const toggleVisible = () => {
-		const newVisibility = !isVisible;
-		setIsVisible(newVisibility);
+	const hide = () => {
+		setIsVisible(false);
+		localStorage.setItem('welcomeMessageHidden', 'yes');
 	}
 
 	return isVisible ? (
@@ -21,7 +17,7 @@ const WelcomeMessage = ({ name }) => {
 			<h2>
 				Welcome to the Friend-Tracker app, {name}!
 			</h2>
-			<button onClick={toggleVisible}>Hide</button>
+			<button onClick={hide}>Hide</button>
 		</div>
 	) : null;
 }
