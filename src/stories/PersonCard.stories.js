@@ -2,7 +2,7 @@ import { PersonCard } from '../components/PersonCard';
 import { friendsData } from '../data'; 
 
 export default {
-    title: 'Components/PersonCard',
+    title: 'People/PersonCard',
     component: PersonCard,
     args: {
         person: friendsData[0].name,
@@ -28,15 +28,29 @@ export default {
             }
         }
     },
+    decorators: [
+        (Story, { args, argTypes }) => {
+            return (
+                <div style={{ width: argTypes.containerWidth.mapping[args.containerWidth] }}>
+                    <Story />
+                </div>
+            );
+        }
+    ]
 }
 
-const Template = args => (
-    <div style={{ width: args.containerWidth }}>
-        <PersonCard {...args} />
-    </div>
-);
+const Template = args => <PersonCard {...args} />;
 
 export const WithoutAction = Template.bind({});
+WithoutAction.decorators = [
+    (Story, { args, argTypes }) => {
+        return (
+            <div style={{ width: argTypes.containerWidth.mapping[args.containerWidth] }}>
+                <Story />
+            </div>
+        );
+    }
+]
 
 export const WithAction = Template.bind({});
 WithAction.args = { actionName: 'Click me!' };

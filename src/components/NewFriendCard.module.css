@@ -6,7 +6,7 @@
 	cursor: pointer;
 	display: flex;
 	height: 100%;
+	min-height: 194px;
 	justify-content: center;
-	min-height: 240px;
 	padding: 8px;
 }
