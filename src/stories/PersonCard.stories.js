@@ -28,6 +28,16 @@ export default {
             }
         }
     },
+    // This is how you add parameters for all a component's stories
+    parameters: {
+        backgrounds: {
+            values: [
+                { name: 'dark gray', value: '#333' },
+                { name: 'light gray', value: '#ccc' },
+                { name: 'red', value: '#f00' },
+            ]
+        }
+    }
 }
 
 const Template = args => (
@@ -37,6 +47,17 @@ const Template = args => (
 );
 
 export const WithoutAction = Template.bind({});
+// Adding parameters for a single component
+WithoutAction.parameters = {
+    backgrounds: {
+        values: [
+            { name: 'dark gray', value: '#333' },
+            { name: 'light gray', value: '#ccc' },
+            { name: 'red', value: '#f00' },
+        ]
+    }
+}
+
 
 export const WithAction = Template.bind({});
 WithAction.args = { actionName: 'Click me!' };
