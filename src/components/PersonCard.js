@@ -6,7 +6,7 @@ const PersonCard = ({
 	onClick = () => {},
 	actionName,
 	onAction = () => {},
-	highlightColor = 'black', // Add this, and show that Storybook automatically infers that it should be a color in the controls
+	highlightColor = 'black',
 }) => {
 	return (
 		<div onClick={onClick} className={styles.cardContainer} style={{ borderBottom: `8px solid ${highlightColor}` }}>
