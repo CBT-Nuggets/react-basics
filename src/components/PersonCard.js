@@ -6,9 +6,10 @@ const PersonCard = ({
 	onClick = () => {},
 	actionName,
 	onAction = () => {},
+	highlightColor = 'black', // Add this, and show that Storybook automatically infers that it should be a color in the controls
 }) => {
 	return (
-		<div onClick={onClick} className={styles.cardContainer}>
+		<div onClick={onClick} className={styles.cardContainer} style={{ borderBottom: `8px solid ${highlightColor}` }}>
 			<div className={styles.detailsContainer}>
 				<div className={styles.profilePicLeft}>
 					<div className={styles.profilePicWrap}>
@@ -43,6 +44,7 @@ PersonCard.propTypes = {
 	onClick: PropTypes.func,
 	actionName: PropTypes.string,
 	onAction: PropTypes.func,
+	highlightColor: PropTypes.string,
 };
 
 export { PersonCard };

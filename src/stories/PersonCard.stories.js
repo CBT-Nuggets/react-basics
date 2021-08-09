@@ -43,8 +43,25 @@ export default {
     title: 'Components/PersonCard',
     component: PersonCard,
     args: { // These args will apply to all stories unless overwritten - "component-level args"
-        person: friendsData[0],
-        containerWidth: '400px',
+        person: friendsData[0].name,
+        containerWidth: 400,
+    },
+    argTypes: {
+        containerWidth: {
+            control: {
+                type: 'range',
+                min: 400,
+                max: 2000,
+                step: 100,
+            },
+        },
+        person: {
+            options: friendsData.map(f => f.name),
+            mapping: friendsData.reduce((labels, f) => ({ ...labels, [f.name]: f }), {}),
+            control: {
+                type: 'select',
+            }
+        }
     },
 }
 
@@ -52,7 +69,7 @@ export default {
 // We're using "width" here because it's the most common use case.
 // Notice that here, we're using an arg to control the container's width
 const Template = args => (
-    <div style={{ width: args.containerWidth }}>
+    <div style={{ width: args.containerWidth + 'px' }}>
         <PersonCard {...args} />
     </div>
 );
