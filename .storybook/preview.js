@@ -8,7 +8,6 @@ export const parameters = {
       date: /Date$/,
     },
   },
-  // This is how you add global parameters to your project
   backgrounds: {
     values: [
         { name: 'dark gray', value: '#333' },
