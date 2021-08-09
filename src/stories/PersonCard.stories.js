@@ -6,10 +6,10 @@ import { PersonCard } from '../components/PersonCard';
 // requests and that sort of thing
 import { friendsData } from '../data'; 
 
-export default {
-    component: PersonCard,
-    title: 'Components/PersonCard', // You can change this name and it will change the left-nav tree accordingly
-};
+// export default {
+//     component: PersonCard,
+//     title: 'Components/PersonCard', // You can change this name and it will change the left-nav tree accordingly
+// };
 
 ////////////// Without Using a Template/Args - i.e. no controls here ///////////////////
 
@@ -39,19 +39,29 @@ export default {
 
 /////////////////// With a template - this allows us to use "controls" ///////////////////////////
 
+export default {
+    title: 'Components/PersonCard',
+    component: PersonCard,
+    args: { // These args will apply to all stories unless overwritten - "component-level args"
+        person: friendsData[0],
+        containerWidth: '400px',
+    },
+}
+
 // Another way to do all this is to create a reusable template, which allows you to avoid excessive repetition.
-// We're using "width" here because it's the most common use case
+// We're using "width" here because it's the most common use case.
+// Notice that here, we're using an arg to control the container's width
 const Template = args => (
-    <div style={{ width: '400px' }}>
+    <div style={{ width: args.containerWidth }}>
         <PersonCard {...args} />
     </div>
 );
 
 export const WithoutAction = Template.bind({});
-WithoutAction.args = { person: friendsData[0] };
+// WithoutAction.args = { person: friendsData[0] }; // Storybook automatically picks up on this "args" key
 
 export const WithAction = Template.bind({});
-WithAction.args = { ...WithoutAction.args, actionName: 'Click me!' }; // Use the spread operator to reduce repeated code
+WithAction.args = { actionName: 'Click me!' };
 
 export const NoProfilePic = Template.bind({});
 NoProfilePic.args = { person: { ...friendsData[0], profilePicUrl: '' }, actionName: 'Click me!' };
