@@ -25,7 +25,7 @@ const PersonCard = ({
 					<p>{person.age}</p>
 				</div>
 			</div>
-			{actionName && onAction && (
+			{actionName && (
 				<button
 					onClick={e => { onAction(); e.stopPropagation(); }}
 					className={styles.actionButton}
