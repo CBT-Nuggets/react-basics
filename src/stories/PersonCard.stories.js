@@ -1,25 +1,16 @@
 import { PersonCard } from '../components/PersonCard';
 import { friendsData } from '../data'; 
+import { widthConstraintArgs, widthConstraintArgTypes, widthConstraintDecorator } from './widthConstraint';
 
 export default {
     title: 'People/PersonCard',
     component: PersonCard,
     args: {
+        ...widthConstraintArgs,
         person: friendsData[0].name,
-        containerWidth: 'small',
     },
     argTypes: {
-        containerWidth: {
-            options: ['small', 'medium', 'large'],
-            mapping: {
-                'small': '400px',
-                'medium': '800px',
-                'large': '100%',
-            },
-            control: {
-                type: 'select',
-            }
-        },
+        ...widthConstraintArgTypes,
         person: {
             options: friendsData.map(f => f.name),
             mapping: friendsData.reduce((labels, f) => ({ ...labels, [f.name]: f }), {}),
@@ -28,29 +19,12 @@ export default {
             }
         }
     },
-    decorators: [
-        (Story, { args, argTypes }) => {
-            return (
-                <div style={{ width: argTypes.containerWidth.mapping[args.containerWidth] }}>
-                    <Story />
-                </div>
-            );
-        }
-    ]
+    decorators: [widthConstraintDecorator],
 }
 
 const Template = args => <PersonCard {...args} />;
 
 export const WithoutAction = Template.bind({});
-WithoutAction.decorators = [
-    (Story, { args, argTypes }) => {
-        return (
-            <div style={{ width: argTypes.containerWidth.mapping[args.containerWidth] }}>
-                <Story />
-            </div>
-        );
-    }
-]
 
 export const WithAction = Template.bind({});
 WithAction.args = { actionName: 'Click me!' };

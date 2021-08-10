@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './WelcomeMessage.module.css';
 
 const WelcomeMessage = ({ name }) => {
-	const existingVisibility = localStorage.getItem('welcomeMessageVisibility') === 'true';
+	const existingVisibility = localStorage.getItem('welcomeMessageVisibility') !== 'false';
 
 	const [isVisible, setIsVisible] = useState(existingVisibility === false ? false : true);
 

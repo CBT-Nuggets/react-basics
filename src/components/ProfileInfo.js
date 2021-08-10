@@ -22,7 +22,11 @@ const ProfileInfo = ({ person, actions = [] }) => {
 		<h3 className={styles.detailHeading}>Birthday</h3>
 		<p>{person.birthday}</p>
 		<h3 className={styles.detailHeading}>Interests</h3>
-		<div>{person.interests.map(interest => <Tag key={interest} text={interest} />)}</div>
+		{person.interests.length > 0 ? (
+			<div>{person.interests.map(interest => <Tag key={interest} text={interest} />)}</div>
+		) : (
+			<p>No interests yet</p>
+		)}
 		{actions.map(action => (
 			<button
 				key={action.actionName}

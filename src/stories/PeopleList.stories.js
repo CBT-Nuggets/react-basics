@@ -1,13 +1,14 @@
 import { MemoryRouter as Router } from 'react-router-dom';
 import { PeopleList } from '../components/PeopleList';
 import { PersonCard } from '../components/PersonCard';
+import { NewFriendCard } from '../components/NewFriendCard';
 import * as PersonCardStories from './PersonCard.stories';
 import { friendsData } from '../data'; 
 
 export default {
     title: 'People/PeopleList',
     component: PeopleList,
-    subcomponents: { PersonCard }, // This is how you tell Storybook that these components are often found together
+    subcomponents: { PersonCard, NewFriendCard }, // This is how you tell Storybook that these components are often found together
     args: {
         people: friendsData,
     }
