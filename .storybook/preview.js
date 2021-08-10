@@ -1,4 +1,5 @@
 import '../src/index.css';
+import { insideRouterDecorator } from '../src/stories/insideRouterDecorator';
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -14,5 +15,7 @@ export const parameters = {
         { name: 'light gray', value: '#ccc' },
         { name: 'red', value: '#f00' },
     ]
-  }
+  },
 }
+
+export const decorators = [insideRouterDecorator('/')];

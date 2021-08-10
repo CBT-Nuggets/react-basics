@@ -15,13 +15,18 @@ const EditFriendPage = () => {
 		history.push('/');
 	}
 
-	return (
+	return friend ? (
 		<>
 		<h1>Edit Friend Info</h1>
 		<PersonInfoForm
 			person={friend}
 			onSubmit={saveUpdatedInformation}
 			buttonText="Save Changes" />
+		</>
+	) : (
+		<>
+		<h1>How'd you get here? This friend doesn't exist</h1>
+		<button onClick={() => history.push('/')}>Back to Friends</button>
 		</>
 	);
 }
