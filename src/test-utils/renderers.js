@@ -1,4 +1,6 @@
 import { render } from '@testing-library/react';
+import { FavoritesProvider } from '../components/FavoritesProvider';
+import { FriendsProvider } from '../components/FriendsProvider';
 import { FavoritesContext } from '../contexts/FavoritesContext';
 import { FriendsContext } from '../contexts/FriendsContext';
 
@@ -23,5 +25,14 @@ export const renderWithResources = (elements, friendsOptions, favoritesOptions, 
             {elements}
         </FavoritesContext.Provider>,
     </FriendsContext.Provider>,
+    options,
+);
+
+export const renderInApp = (elements, options) => render(
+    <FavoritesProvider>
+        <FriendsProvider>
+            {elements}
+        </FriendsProvider>
+    </FavoritesProvider>,
     options,
 );
